@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+# env file
+.env
+.env.
+*.env
+*.env.*
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+*.pid
+*.seed
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
