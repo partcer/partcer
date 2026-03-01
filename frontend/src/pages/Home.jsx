@@ -1,10 +1,11 @@
-import { BuyerProjectCard, CallToAction, Container, FreelancerProfileCard, Heading, HeadingDescription, Hero, ServiceCard, Subheading } from "../components";
+import { BuyerProjectCard, CallToAction, Container, FreelancerProfileCard, Heading, HeadingDescription, Hero, LoadingSpinner, ServiceCard, Subheading } from "../components";
 import Marquee from "react-fast-marquee";
 import { volkswagen, ford, bmw, hyundai, kia, mercedes, skoda, volvo, audi, renault, tesla, lamborghini } from "../assets";
 import { lazy, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BadgeCheck, Check, ChevronRight, CloudLightningIcon, Code, Focus, ThumbsUp } from "lucide-react";
 import { usePopUp } from "../contexts/PopUpContextProvider";
+import { Suspense } from "react";
 
 const trustedBrands = [
     {
@@ -257,10 +258,14 @@ function Home() {
             </Container>
 
             {/* Services Section */}
-            <FeaturedServices />
+            <Suspense fallback={<LoadingSpinner height={`725px`} />}>
+                <FeaturedServices />
+            </Suspense>
 
             {/* Freelancers Section */}
-            <FeaturedFreelancers />
+            <Suspense fallback={<LoadingSpinner height={`725px`} />}>
+                <FeaturedFreelancers />
+            </Suspense>
 
             {/* Features Section */}
             <Container className="mt-8 mb-16">

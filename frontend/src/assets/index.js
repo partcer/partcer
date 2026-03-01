@@ -13,6 +13,7 @@ import renault from './renault.webp';
 import tesla from './tesla.webp';
 import logo from './logo.webp';
 import dummyUserImg from './dummyUserImg.webp';
+import aboutUs from './aboutUs.webp';
 
 const otherData = {
     phone: '+911234567890',
@@ -37,4 +38,5 @@ export {
     tesla,
     logo,
     dummyUserImg,
+    aboutUs,
 }

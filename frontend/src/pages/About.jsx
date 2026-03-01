@@ -26,7 +26,7 @@ import {
     Play,
     Quote,
 } from 'lucide-react';
-import { dummyUserImg, otherData } from '../assets';
+import { aboutUs, dummyUserImg, otherData } from '../assets';
 
 const About = () => {
     const [activeVideo, setActiveVideo] = useState(false);
@@ -205,35 +205,8 @@ const About = () => {
                     </div>
 
                     {/* Right Video */}
-                    <div className="relative">
-                        <div className="relative rounded-xl overflow-hidden bg-gray-100 aspect-video">
-                            {!activeVideo ? (
-                                <>
-                                    <img
-                                        src="https://find.raretalancer.online/wp-content/uploads/2024/09/=ETNyQTMe5VeltmY05lX3VmYzlGdl1SM3IjN3YDN3QDM.png"
-                                        alt="Video Thumbnail"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <button
-                                        onClick={() => setActiveVideo(true)}
-                                        className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
-                                    >
-                                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                                            <Play size={24} className="text-primary ml-1" />
-                                        </div>
-                                    </button>
-                                </>
-                            ) : (
-                                <iframe
-                                    className="w-full h-full"
-                                    src="https://www.youtube.com/embed/H9uSOlEnZhc?si=thGcy7J81ZtnQulq&autoplay=1"
-                                    title="YouTube video player"
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowFullScreen
-                                />
-                            )}
-                        </div>
+                    <div className="h-full max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] rounded-xl overflow-hidden">
+                        <img src={aboutUs} alt="about us" className='h-full object-cover w-full' />
                     </div>
                 </div>
 

@@ -38,7 +38,7 @@ app.use(express.json({ limit: '16kb' }));
 app.use(express.urlencoded({ limit: '16kb' }));
 
 app.use(cors({
-    origin: ['https://www.partcer.com', 'https://partcer.com', 'https://partcer-frontend.onrender.com', 'http://localhost:5173'],
+    origin: ['https://www.partcer.com', 'https://partcer.com', 'https://partcer-frontend.onrender.com', 'https://partcer-backend.onrender.com', 'http://localhost:5173', 'http://localhost:3000'],
     credentials: true,
 }));
 
@@ -46,7 +46,7 @@ app.use(cors({
 app.get('/api/v1/health', (req, res) => {
     res.status(200).json({ 
         status: 'ok', 
-        agenda: agendaStarted ? 'running' : 'failed'
+        // agenda: agendaStarted ? 'running' : 'failed'
     });
 });
 
