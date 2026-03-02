@@ -1,7 +1,7 @@
 import { BuyerProjectCard, CallToAction, Container, FreelancerProfileCard, Heading, HeadingDescription, Hero, LoadingSpinner, ServiceCard, Subheading } from "../components";
 import Marquee from "react-fast-marquee";
 import { volkswagen, ford, bmw, hyundai, kia, mercedes, skoda, volvo, audi, renault, tesla, lamborghini } from "../assets";
-import { lazy, useEffect, useState } from "react";
+import { lazy, useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { BadgeCheck, Check, ChevronRight, CloudLightningIcon, Code, Focus, ThumbsUp } from "lucide-react";
 import { usePopUp } from "../contexts/PopUpContextProvider";
@@ -60,17 +60,17 @@ const trustedBrands = [
 
 const featuresData = [
     {
-        icon: <BadgeCheck className="text-primary size-8 mt-4" />,
+        icon: <BadgeCheck className="text-white size-8" />,
         title: "Real-World Expertise",
         description: "Learn from pros currently working in top tech companies.",
     },
     {
-        icon: <Focus className="text-primary size-8 mt-4" />,
+        icon: <Focus className="text-white size-8" />,
         title: "Focused 1:1 Attention",
         description: "Personalized guidance that group classes can't provide.",
     },
     {
-        icon: <Code className="text-primary size-8 mt-4" />,
+        icon: <Code className="text-white size-8" />,
         title: "Practical Skill Building",
         description: "Hands-on experience with real projects and mocks.",
     },
@@ -274,20 +274,49 @@ function Home() {
                     <Heading content={'Why Freelancers & Buyers Trust Us'} className="text-black" />
                     <HeadingDescription content={"India's most supportive freelance marketplace for job training. Here's what makes us different."} className="text-" />
                 </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center gap-6 md:gap-4 mt-10">
-                    {featuresData.map((feature, index) => (
-                        <div key={index} className={`hover:-translate-y-0.5 transition duration-300 ${index === 1 ? 'p-px rounded-[13px] bg-gradient-to-br from-primary to-primary-dark' : ''}`}>
-                            <div className="p-6 rounded-xl space-y-4 border bg-gradient-to-r from-gray-800 to-gray-950 backdrop-blur shadow-lg w-full">
-                                {feature.icon}
-                                <h3 className="text-base font-medium text-white">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-slate-400 line-clamp-2 pb-4">
-                                    {feature.description}
-                                </p>
+                    {featuresData.map((feature, index) => {
+                        const [ref, setRef] = useState(null);
+                        const [visible, setVisible] = useState(false);
+
+                        useEffect(() => {
+                            const observer = new IntersectionObserver(
+                                ([entry]) => setVisible(entry.isIntersecting),
+                                { threshold: 0.3 }
+                            );
+
+                            if (ref) observer.observe(ref);
+                            return () => observer.disconnect();
+                        }, [ref]);
+
+                        return (
+                            <div
+                                key={index}
+                                ref={setRef}
+                                className={`transition-all duration-700 ${visible
+                                        ? "opacity-100 translate-y-0"
+                                        : "opacity-0 translate-y-12"
+                                    } ${index === 1 ? 'p-px rounded-[13px] bg-gradient-to-br from-primary to-primary-dark' : ''}`}
+                                style={{ transitionDelay: `${index * 200}ms` }}
+                            >
+                                <div className={`p-6 rounded-xl space-y-4 border bg-gradient-to-r from-gray-800 to-gray-950 backdrop-blur shadow-lg w-full h-full transition-transform duration-300 hover:scale-105 hover:-translate-y-1`}>
+                                    <div className="relative inline-flex items-center justify-center mb-2">
+                                        <div className="absolute w-16 h-16 bg-primary/20 rounded-2xl blur-xl opacity-60"></div>
+                                        <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                                            {feature.icon}
+                                        </div>
+                                    </div>
+                                    <h3 className="text-base font-medium text-white">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="text-slate-400 line-clamp-2 pb-4">
+                                        {feature.description}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </Container>
 

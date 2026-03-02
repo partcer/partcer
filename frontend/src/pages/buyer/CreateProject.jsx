@@ -846,7 +846,7 @@ const CreateProject = () => {
                                     </h2>
 
                                     {/* Project Type */}
-                                    <div className="mb-6">
+                                    {/* <div className="mb-6">
                                         <label className="block text-sm font-medium text-gray-700 mb-3">
                                             How do you want to pay? *
                                         </label>
@@ -915,7 +915,7 @@ const CreateProject = () => {
                                                 </div>
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     {/* Fixed Price Budget */}
                                     {projectType === 'fixed' && (
@@ -1173,14 +1173,14 @@ const CreateProject = () => {
                                 </button>
                             ) : (
                                 <div className="flex flex-col sm:flex-row items-center gap-3 order-1 sm:order-2 w-full sm:w-auto">
-                                    <button
+                                    {/* <button
                                         type="button"
                                         onClick={saveAsDraft}
                                         disabled={isLoading}
                                         className="w-full sm:w-auto px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium disabled:opacity-50"
                                     >
                                         Save as Draft
-                                    </button>
+                                    </button> */}
                                     <button
                                         type="submit"
                                         disabled={isLoading}

@@ -1143,7 +1143,7 @@ const AdminProjects = () => {
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-sm text-gray-600">Average Budget</span>
-                                        <span className="font-medium text-gray-900">{formatCurrency(stats.totalBudget/stats.total)}</span>
+                                        <span className="font-medium text-gray-900">{formatCurrency(stats.totalBudget / stats.total)}</span>
                                     </div>
                                 </div>
                             </div>
@@ -1262,7 +1262,10 @@ const AdminProjects = () => {
                                             </span>
                                         )}
                                     </div>
-                                    <p className="text-sm text-gray-600 mt-1 line-clamp-3">{selectedProject.description}</p>
+                                    <div
+                                        className="prose max-w-none text-gray-700"
+                                        dangerouslySetInnerHTML={{ __html: selectedProject.description }}
+                                    />
                                     <div className="flex items-center gap-2 mt-2">
                                         {getStatusBadge(selectedProject.status)}
                                     </div>

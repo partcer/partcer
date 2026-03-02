@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Container, Heading, HeadingDescription, StartChatButton, Subheading } from '../components';
+import { Container, Heading, HeadingDescription, LoadingSpinner, StartChatButton, Subheading } from '../components';
 import ServiceCard from '../components/ServiceCard';
 import {
     Heart,
@@ -42,6 +42,10 @@ import { useForm } from 'react-hook-form';
 import axiosInstance from '../utils/axiosInstance'
 import toast from 'react-hot-toast';
 import { dummyUserImg } from '../assets';
+import { lazy } from 'react';
+import { Suspense } from 'react';
+
+const YouTubeEmbed = lazy(() => import('../components/YouTubeEmbed'));
 
 const ServiceDetails = () => {
     const { serviceId } = useParams();
@@ -147,6 +151,16 @@ const ServiceDetails = () => {
             toast.error('Failed to update wishlist');
         }
     };
+
+    // Extract YouTube ID from URL
+    const getYouTubeId = (url) => {
+        if (!url) return null;
+        const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+        const match = url.match(regex);
+        return match ? match[1] : null;
+    };
+
+    const youtubeVideoId = getYouTubeId(service?.videoLink);
 
     const handleShare = async (platform) => {
         const url = window.location.href;
@@ -481,6 +495,7 @@ const ServiceDetails = () => {
                                     >
                                         <img
                                             src={img.url}
+                                            loading='lazy'
                                             alt={`Thumbnail ${index + 1}`}
                                             className="w-full h-full object-cover"
                                         />
@@ -497,6 +512,19 @@ const ServiceDetails = () => {
                                 dangerouslySetInnerHTML={{ __html: service.description }}
                             />
                         </div>
+
+                        {/* Video section */}
+                        {youtubeVideoId && (
+                            <>
+                                <div className="mt-8" />
+                                <div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-4">Video Look</h3>
+                                    <Suspense fallback={<LoadingSpinner />}>
+                                        <YouTubeEmbed videoId={youtubeVideoId} title={service?.title || 'service video'} />
+                                    </Suspense>
+                                </div>
+                            </>
+                        )}
 
                         {/* Why Work With Me - From Seller Bio */}
                         {service.seller?.bio && (
@@ -742,6 +770,7 @@ const ServiceDetails = () => {
                                             <div className="flex items-start gap-4 mb-4">
                                                 <img
                                                     src={review.user?.avatar || '/default-avatar.png'}
+                                                    loading='lazy'
                                                     alt={review.user?.name || 'User'}
                                                     className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                                                     onError={(e) => {
@@ -830,6 +859,7 @@ const ServiceDetails = () => {
                                                 <img
                                                     src={packageImages[pkg.title.toLowerCase()] || packageImages.basic}
                                                     alt={pkg.title}
+                                                    loading='lazy'
                                                     className="w-16 h-16 mx-auto"
                                                 />
                                             </div>
@@ -917,6 +947,7 @@ const ServiceDetails = () => {
                                         <img
                                             src={service.seller.profileImage || dummyUserImg}
                                             alt={service.seller.displayName || service.seller.firstName}
+                                            loading='lazy'
                                             className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm"
                                             onError={(e) => {
                                                 e.target.src = 'https://via.placeholder.com/64';
@@ -1044,7 +1075,7 @@ const ServiceDetails = () => {
                                 <HeadingDescription content="Check out more services from this freelancer" />
                             </div>
                             <Link
-                                to={`/freelancer/${service.seller?._id}/services`}
+                                to={`/services?search=${service.seller?.displayName || service.seller?.name}`}
                                 className="flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
                             >
                                 View All
@@ -1070,7 +1101,7 @@ const ServiceDetails = () => {
                                 <HeadingDescription content="Discover other services that might interest you" />
                             </div>
                             <Link
-                                to={`/services?category=${service.category?._id}`}
+                                to={`/services?category=${service.category?.slug}`}
                                 className="flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
                             >
                                 Browse Category

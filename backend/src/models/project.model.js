@@ -183,6 +183,7 @@ const projectSchema = new Schema(
       type: String,
       enum: ["fixed", "hourly"],
       required: true,
+      default: "fixed",
     },
     budget: {
       type: Number,

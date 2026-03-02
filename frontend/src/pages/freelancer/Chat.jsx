@@ -197,7 +197,7 @@ const Chat = () => {
             <div className="flex-1">
                 <FreelancerHeader />
                 <FreelancerContainer>
-                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 h-[calc(100vh-150px)] mt-20 md:mt-10 relative">
+                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 h-[calc(100vh-150px)] mt-20 md:mt-5 relative">
                         <div className="flex h-full">
                             {/* Mobile Toggle Button - Only shows when list is hidden */}
                             {!showMobileList && (

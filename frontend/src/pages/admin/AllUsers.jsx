@@ -198,6 +198,10 @@ const AllUsers = () => {
         applyFilters();
     }, [applyFilters]);
 
+    const handleRoleFilterChange = (value) => {
+        setRoleFilter(value);
+    };
+
     const getRoleBadge = (role) => {
         const config = {
             admin: { bg: 'bg-purple-100', text: 'text-purple-700', label: 'Admin', icon: Shield },
@@ -518,7 +522,7 @@ const AllUsers = () => {
                     </div>
 
                     {/* Stats Cards */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-6">
                         <div className="bg-white p-4 rounded-xl border border-gray-200">
                             <div className="flex items-center gap-3">
                                 <div className="p-2 bg-blue-100 rounded-lg">
@@ -563,7 +567,7 @@ const AllUsers = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-white p-4 rounded-xl border border-gray-200">
+                        {/* <div className="bg-white p-4 rounded-xl border border-gray-200">
                             <div className="flex items-center gap-3">
                                 <div className="p-2 bg-yellow-100 rounded-lg">
                                     <Clock size={20} className="text-yellow-600" />
@@ -573,7 +577,7 @@ const AllUsers = () => {
                                     <p className="text-xl font-bold">{stats.pending}</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="bg-white p-4 rounded-xl border border-gray-200">
                             <div className="flex items-center gap-3">
                                 <div className="p-2 bg-red-100 rounded-lg">
@@ -640,7 +644,7 @@ const AllUsers = () => {
                                     <option value="verified">Verified</option>
                                     <option value="unverified">Unverified</option>
                                 </select>
-                                <select
+                                {/* <select
                                     value={dateRange}
                                     onChange={(e) => {
                                         setDateRange(e.target.value);
@@ -653,7 +657,7 @@ const AllUsers = () => {
                                     <option value="90">Last 90 days</option>
                                     <option value="365">Last year</option>
                                     <option value="all">All time</option>
-                                </select>
+                                </select> */}
                             </div>
                         </div>
                     </div>

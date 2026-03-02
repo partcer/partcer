@@ -24,12 +24,15 @@ export const SocketProvider = ({ children }) => {
         if (isAuthenticated && user) {
             const token = localStorage.getItem('accessToken');
 
-            const newSocket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:3000', {
+            const newSocket = io(import.meta.env.VITE_DOMAIN_URL || 'http://localhost:3000', {
                 auth: { token },
-                transports: ['websocket'],
+                transports: ['websocket', 'polling'], // Add polling as fallback
+                withCredentials: true,
                 reconnection: true,
-                reconnectionAttempts: 5,
-                reconnectionDelay: 1000
+                reconnectionAttempts: 10,
+                reconnectionDelay: 1000,
+                reconnectionDelayMax: 5000,
+                timeout: 20000
             });
 
             socketRef.current = newSocket;

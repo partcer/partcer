@@ -591,7 +591,7 @@ const EditProject = () => {
             });
 
             toast.success('Project updated successfully!');
-            navigate('/admin/projects');
+            navigate('/admin/projects/all');
         } catch (error) {
             const errorMessage = error?.response?.data?.message || 'Failed to update project';
             toast.error(errorMessage);

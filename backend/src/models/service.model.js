@@ -473,6 +473,39 @@ serviceSchema.statics.findSimilar = function (serviceId, limit = 4) {
   return this.aggregate([
     { $match: { _id: { $ne: serviceId }, status: "published" } },
     { $sample: { size: limit } },
+    {
+      $lookup: {
+        from: "users",
+        localField: "seller",
+        foreignField: "_id",
+        as: "seller",
+      },
+    },
+    { $unwind: "$seller" },
+    {
+      $project: {
+        title: 1,
+        slug: 1,
+        description: 1,
+        price: 1,
+        packages: 1,
+        gallery: 1,
+        rating: 1,
+        reviewCount: 1,
+        totalSales: 1,
+        location: 1,
+        tags: 1,
+        createdAt: 1,
+        "seller._id": 1,
+        "seller.firstName": 1,
+        "seller.lastName": 1,
+        "seller.displayName": 1,
+        "seller.profileImage": 1,
+        "seller.country": 1,
+        "seller.isVerified": 1,
+        "seller.tagline": 1,
+      },
+    },
   ]);
 };
 

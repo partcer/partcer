@@ -676,7 +676,7 @@ const EditUser = () => {
 
             if (response.data.success) {
                 toast.success('User updated successfully!');
-                navigate('/admin/users');
+                navigate('/admin/users/all');
             }
         } catch (error) {
             console.error('Error updating user:', error);

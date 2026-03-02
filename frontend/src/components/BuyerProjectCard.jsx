@@ -114,6 +114,7 @@ const ProjectCard = ({ project, onSaveToggle }) => {
                             <img
                                 src={getBuyerAvatar()}
                                 alt={getBuyerName()}
+                                loading='lazy'
                                 className='h-14 w-14 md:h-16 md:w-16 rounded-lg object-cover flex-shrink-0'
                             />
 

@@ -169,6 +169,7 @@ const About = () => {
                             <div className="flex items-center gap-3">
                                 <img
                                     src={dummyUserImg}
+                                    loading='lazy'
                                     alt="Manoj Prabakar"
                                     className="w-10 h-10 rounded-full object-cover"
                                 />
@@ -206,7 +207,7 @@ const About = () => {
 
                     {/* Right Video */}
                     <div className="h-full max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] rounded-xl overflow-hidden">
-                        <img src={aboutUs} alt="about us" className='h-full object-cover w-full' />
+                        <img src={aboutUs} loading='lazy' alt="about us" className='h-full object-cover w-full' />
                     </div>
                 </div>
 

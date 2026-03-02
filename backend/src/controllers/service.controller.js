@@ -142,7 +142,7 @@ const createService = asyncHandler(async (req, res) => {
     faqs: faqs || [],
     gallery,
     seller: req.user._id,
-    status: "draft",
+    status: "published",
   });
 
   // Populate seller info
@@ -1150,7 +1150,7 @@ const adminDeleteService = asyncHandler(async (req, res) => {
     }
   }
 
-  await service.findByIdAndDelete(serviceId);
+  await Service.findByIdAndDelete(serviceId);
 
   // After service deletion
   Category.findByIdAndUpdate(service.category, {

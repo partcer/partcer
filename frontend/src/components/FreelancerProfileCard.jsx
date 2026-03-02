@@ -11,7 +11,7 @@ const FreelancerProfileCard = ({ freelancer }) => {
                 <div className="flex flex-col items-start gap-5">
                     <div>
                         <div className='flex items-center justify-center gap-5'>
-                            <img src={freelancer.profileImage || dummyUserImg} alt="user image" className='h-14 w-14 object-cover rounded-full' />
+                            <img src={freelancer.profileImage || dummyUserImg} loading='lazy' alt="user image" className='h-14 w-14 object-cover rounded-full' />
                             <div>
                                 <h2 className="text-lg font-semibold leading-tight text-gray-900"><Link to={`/freelancer/${freelancer?._id}`}>{freelancer?.displayName || `${freelancer?.firstName} ${freelancer?.lastName}`}</Link></h2>
                                 {/* <div className="flex items-center gap-1 mt-1 text-gray-600">

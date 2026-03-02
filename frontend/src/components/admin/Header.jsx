@@ -51,6 +51,7 @@ function Header() {
                     <div className="text-right hidden md:block">
                         <Link to={`/admin/profile`} className="text-sm font-medium text-black">{user?.firstName + ' ' + user?.lastName}</Link>
                         <p className="text-xs text-secondary">{user?.username}</p>
+                        <p className="text-xs capitalize text-gray-500">{user?.userType}</p>
                     </div>
                     {
                         user?.profileImage

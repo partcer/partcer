@@ -370,15 +370,29 @@ const SkillsSelect = ({ selectedSkills, onChange }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [search, setSearch] = useState("");
     const dropdownRef = useRef(null);
+    const [skills, setSkills] = useState([]);
+    const [loadingSkills, setLoadingSkills] = useState(false);
 
-    const allSkills = [
-        "AI Development", "Web Development", "Mobile App", "UI/UX Design",
-        "Digital Marketing", "Content Writing", "Graphic Design", "Video Editing",
-        "SEO", "Social Media Marketing", "Data Analysis", "Machine Learning",
-        "Blockchain", "Cloud Computing", "DevOps", "Project Management",
-        "Python", "JavaScript", "React", "Node.js", "PHP", "Laravel",
-        "WordPress", "Shopify", "Adobe Photoshop", "Adobe Illustrator", "Figma"
-    ];
+    // Fetch skills
+    useEffect(() => {
+        const fetchSkills = async () => {
+            try {
+                setLoadingSkills(true);
+                const response = await axiosInstance.get('/api/v1/skills/public');
+                if (response.data?.success) {
+                    setSkills(Array.isArray(response.data.data) ? response.data.data : []);
+                }
+            } catch (error) {
+                console.error('Error fetching skills:', error);
+                toast.error('Failed to load skills');
+            } finally {
+                setLoadingSkills(false);
+            }
+        };
+        fetchSkills();
+    }, []);
+
+    const allSkills = skills.map(skill => skill.name);
 
     const filteredSkills = allSkills.filter(skill =>
         skill.toLowerCase().includes(search.toLowerCase())
@@ -678,14 +692,14 @@ function Profile() {
         // Freelancer specific
         setValue("freelancerType", userData.freelancerType || "independent");
 
-        if(userData.englishLevel){
+        if (userData.englishLevel) {
             setValue("englishLevel", userData.englishLevel);
         }
 
-        if(userData.gender){
+        if (userData.gender) {
             setValue("gender", userData.gender);
         }
-        
+
         setValue("hourlyRate", userData.hourlyRate || "");
 
         // Arrays
@@ -1166,6 +1180,28 @@ function Profile() {
                                                 />
                                             )}
                                         />
+                                    </div>
+
+                                    {/* Action Buttons */}
+                                    <div className="flex flex-col sm:flex-row items-center justify-end mt-5 gap-3">
+                                        <button
+                                            type="submit"
+                                            form="profile-form"
+                                            disabled={loading}
+                                            className="flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium shadow-sm hover:shadow transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            {loading ? (
+                                                <>
+                                                    <Loader2 size={18} className="animate-spin" />
+                                                    Saving...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Save size={18} />
+                                                    Save Changes
+                                                </>
+                                            )}
+                                        </button>
                                     </div>
                                 </div>
 

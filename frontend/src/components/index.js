@@ -36,6 +36,7 @@ import Avatar from "./Avatar";
 import StartChatButton from "./StartChatButton";
 import FeaturedServices from "./FeaturedServices";
 import FeaturedFreelancers from "./FeaturedFreelancers";
+import YouTubeEmbed from "./YouTubeEmbed";
 
 export {
     Header,
@@ -76,4 +77,5 @@ export {
     StartChatButton,
     FeaturedServices,
     FeaturedFreelancers,
+    YouTubeEmbed,
 }

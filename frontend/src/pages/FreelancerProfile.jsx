@@ -279,7 +279,7 @@ const FreelancerProfile = () => {
                                     >
                                         Portfolio
                                     </button>
-                                    <button
+                                    {/* <button
                                         onClick={() => setActiveTab("reviews")}
                                         className={`flex-1 py-4 px-6 text-sm font-medium ${activeTab === "reviews"
                                             ? "text-primary border-b-2 border-primary"
@@ -287,7 +287,7 @@ const FreelancerProfile = () => {
                                             }`}
                                     >
                                         Reviews
-                                    </button>
+                                    </button> */}
                                 </div>
 
                                 {/* About Tab */}

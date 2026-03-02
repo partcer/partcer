@@ -142,8 +142,8 @@ function Register() {
 
                 // Redirect based on user type
                 const redirectPath = userData.userType === 'freelancer'
-                    ? '/freelancer/profile'
-                    : '/buyer/profile';
+                    ? '/freelancer/profile/settings'
+                    : '/buyer/profile/settings';
                 navigate(redirectPath);
             }
         } catch (error) {
@@ -512,11 +512,11 @@ function Register() {
                                     </div>
                                     <span className="text-sm text-gray-600">
                                         I have read and agree to the{' '}
-                                        <Link to="/terms" className="text-primary hover:text-primary/80 font-medium">
-                                            Terms of Service
+                                        <Link to="/terms-conditions" className="text-primary hover:text-primary/80 font-medium">
+                                            Terms & Conditions
                                         </Link>{' '}
                                         and{' '}
-                                        <Link to="/privacy" className="text-primary hover:text-primary/80 font-medium">
+                                        <Link to="/privacy-policy" className="text-primary hover:text-primary/80 font-medium">
                                             Privacy Policy
                                         </Link>
                                     </span>

@@ -88,7 +88,7 @@ const FiltersSection = ({
                                 <Loader size={20} className="animate-spin text-primary" />
                             </div>
                         ) : (
-                            categories.slice(0, 10).map(category => (
+                            categories.map(category => (
                                 <label key={category._id} className="flex items-center gap-3 cursor-pointer">
                                     <input
                                         type="checkbox"
@@ -100,8 +100,8 @@ const FiltersSection = ({
                                 </label>
                             ))
                         )}
-                        {categories.length > 10 && (
-                            <p className="text-xs text-gray-500 mt-1">Showing 10 of {categories.length} categories</p>
+                        {categories.length > 0 && (
+                            <p className="text-xs text-gray-500 mt-1">Showing {categories.length} of {categories.length} categories</p>
                         )}
                     </div>
                 </div>
@@ -124,7 +124,7 @@ const FiltersSection = ({
                                 <Loader size={20} className="animate-spin text-primary" />
                             </div>
                         ) : (
-                            skills.slice(0, 10).map(skill => (
+                            skills.map(skill => (
                                 <label key={skill._id} className="flex items-center gap-3 cursor-pointer">
                                     <input
                                         type="checkbox"
@@ -136,8 +136,8 @@ const FiltersSection = ({
                                 </label>
                             ))
                         )}
-                        {skills.length > 10 && (
-                            <p className="text-xs text-gray-500 mt-1">Showing 10 of {skills.length} skills</p>
+                        {skills.length > 0 && (
+                            <p className="text-xs text-gray-500 mt-1">Showing {skills.length} of {skills.length} skills</p>
                         )}
                     </div>
                 </div>
@@ -576,8 +576,8 @@ function AllServices() {
         { value: "oldest", label: "Oldest First" },
         { value: "price-high", label: "Price: High to Low" },
         { value: "price-low", label: "Price: Low to High" },
-        { value: "rating-high", label: "Rating: High to Low" },
-        { value: "delivery-fast", label: "Fastest Delivery" }
+        // { value: "rating-high", label: "Rating: High to Low" },
+        // { value: "delivery-fast", label: "Fastest Delivery" }
     ];
 
     return (
@@ -650,7 +650,7 @@ function AllServices() {
 
                                 <div className="flex items-center gap-3">
                                     {/* View Mode Toggle */}
-                                    <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
+                                    {/* <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
                                         <button
                                             onClick={() => setViewMode("grid")}
                                             className={`p-1.5 md:p-2 rounded transition-colors ${viewMode === "grid" ? "bg-white shadow-sm" : "hover:bg-gray-200"}`}
@@ -665,7 +665,7 @@ function AllServices() {
                                         >
                                             <List size={16} className={viewMode === "list" ? "text-primary" : "text-gray-500"} />
                                         </button>
-                                    </div>
+                                    </div> */}
 
                                     {/* Sort Dropdown */}
                                     <div className="flex items-center gap-2">

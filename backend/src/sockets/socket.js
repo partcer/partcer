@@ -15,10 +15,15 @@ export const initializeSocket = (server) => {
         "https://www.partcer.com",
         "https://partcer.com",
         "https://partcer-frontend.onrender.com",
+        "https://partcer-backend.onrender.com",
         "http://localhost:5173",
       ],
       credentials: true,
+      methods: ["GET", "POST"],
     },
+    transports: ["websocket", "polling"], // Add polling as fallback
+    pingTimeout: 60000,
+    pingInterval: 25000,
   });
 
   // Socket authentication middleware

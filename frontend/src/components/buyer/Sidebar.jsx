@@ -27,7 +27,8 @@ import {
     CheckCircle,
     XCircle,
     FolderOpen,
-    UserSearch
+    UserSearch,
+    Headphones
 } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { logo } from "../../assets";
@@ -155,7 +156,13 @@ const navigationItems = [
     //         { name: 'Contact Us', path: '/buyer/support/contact', icon: <MessageSquare size={18} /> },
     //         { name: 'Disputes', path: '/buyer/support/disputes', icon: <RotateCcw size={18} /> },
     //     ]
-    // }
+    // },
+    {
+        type: 'link',
+        name: 'Support',
+        path: '/contact',
+        icon: <Headphones size={20} />
+    },
 ];
 
 function Sidebar() {

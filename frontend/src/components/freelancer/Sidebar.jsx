@@ -24,7 +24,9 @@ import {
     BanknoteArrowDown,
     BriefcaseBusiness,
     FolderOpen,
-    Search
+    Search,
+    Headphones,
+    FolderCheck
 } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { logo } from "../../assets";
@@ -46,12 +48,6 @@ const navigationItems = [
         icon: <MessageSquare size={20} />
     },
     {
-        type: 'link',
-        name: 'Browse Projects',
-        path: '/projects',
-        icon: <Search size={20} />
-    },
-    {
         type: 'dropdown',
         name: 'Services',
         icon: <Briefcase size={20} />,
@@ -65,10 +61,14 @@ const navigationItems = [
         ]
     },
     {
-        type: 'link',
+        type: 'dropdown',
         name: 'Projects',
-        path: '/freelancer/projects',
-        icon: <FolderOpen size={20} />
+        icon: <FolderOpen size={20} />,
+        isOpen: false,
+        subItems: [
+            { name: 'Browse Projects', path: '/projects', icon: <Search size={18} /> },
+            { name: 'Applied Project', path: '/freelancer/projects', icon: <FolderCheck size={18} /> },
+        ]
     },
     {
         type: 'link',
@@ -128,6 +128,12 @@ const navigationItems = [
     //     path: '/freelancer/notifications',
     //     icon: <Bell size={20} />
     // },
+    {
+        type: 'link',
+        name: 'Support',
+        path: '/contact',
+        icon: <Headphones size={20} />
+    },
 ];
 
 function Sidebar() {

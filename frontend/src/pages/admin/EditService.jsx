@@ -453,7 +453,7 @@ const EditService = () => {
             });
 
             toast.success('Service updated successfully!');
-            navigate('/admin/services');
+            navigate('/admin/services/all');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to update service');
         } finally {

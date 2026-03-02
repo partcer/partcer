@@ -508,9 +508,9 @@ const CreateService = () => {
 
                 // Redirect based on action
                 if (formData.action === 'publish') {
-                    navigate('/seller/services');
+                    navigate('/freelancer/services');
                 } else {
-                    navigate('/seller/services/drafts');
+                    navigate('/freelancer/services');
                 }
             }
         } catch (error) {
@@ -1077,7 +1077,7 @@ const CreateService = () => {
                                     </div>
 
                                     {/* Extra Offers */}
-                                    <div className="mb-6">
+                                    {/* <div className="mb-6">
                                         <div className="flex justify-between items-center mb-4">
                                             <label className="block text-sm font-medium text-gray-700">
                                                 Extra Offers & Add-ons
@@ -1158,7 +1158,7 @@ const CreateService = () => {
                                                 </p>
                                             </div>
                                         )}
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         )}
@@ -1358,14 +1358,14 @@ const CreateService = () => {
                                 </button>
                             ) : (
                                 <div className="flex items-center gap-3">
-                                    <button
+                                    {/* <button
                                         type="button"
                                         onClick={saveAsDraft}
                                         disabled={isLoading}
                                         className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium disabled:opacity-50"
                                     >
                                         Save as Draft
-                                    </button>
+                                    </button> */}
                                     <button
                                         type="submit"
                                         name="action"

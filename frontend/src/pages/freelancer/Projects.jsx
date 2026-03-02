@@ -522,7 +522,7 @@ const Projects = () => {
                                                                     <span className="text-blue-500 text-xs">✓</span>
                                                                 )}
                                                             </div>
-                                                            <div className="text-xs text-gray-500">{app.client?.company || app.client?.email}</div>
+                                                            <div className="text-xs text-gray-500">{app.client?.company || ''}</div>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -558,7 +558,7 @@ const Projects = () => {
                                                         >
                                                             <Eye size={18} />
                                                         </button>
-                                                        <button
+                                                        {/* <button
                                                             onClick={() => handleMessageClient(app.client?._id, app.project?._id || app.projectId)}
                                                             className="p-2 text-gray-600 hover:text-primary hover:bg-gray-100 rounded-lg relative"
                                                             title="Messages"
@@ -569,7 +569,7 @@ const Projects = () => {
                                                                     {app.unreadMessages}
                                                                 </span>
                                                             )}
-                                                        </button>
+                                                        </button> */}
                                                         {app.applicantStatus === 'pending' && (
                                                             <button
                                                                 onClick={() => {
@@ -820,7 +820,7 @@ const Projects = () => {
                                                 </span>
                                             )}
                                         </div>
-                                        <p className="text-sm text-gray-600">{selectedApplication.client?.company || selectedApplication.client?.email}</p>
+                                        <p className="text-sm text-gray-600">{selectedApplication.client?.company || ''}</p>
                                         <div className="flex items-center gap-2 mt-2">
                                             <div className="flex items-center gap-1">
                                                 <Star size={14} className="fill-yellow-400 text-yellow-400" />
@@ -1031,7 +1031,7 @@ const Projects = () => {
                                     <MessageCircle size={18} />
                                     Message Client
                                 </button> */}
-                                <StartChatButton userId={selectedApplication?.client?._id} userName={selectedApplication?.name} />
+                                {(selectedApplication.applicantStatus === 'shortlisted' || selectedApplication.applicantStatus === 'hired') &&<StartChatButton userId={selectedApplication?.client?._id} userName={selectedApplication?.name} />}
                                 <button
                                     onClick={() => handleViewProject(selectedApplication.project?._id || selectedApplication.projectId)}
                                     className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark flex items-center justify-center gap-2"

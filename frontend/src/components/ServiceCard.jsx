@@ -108,6 +108,7 @@ const ServiceCard = ({ service }) => {
                         <img
                             src={getSellerImage()}
                             alt={getSellerName()}
+                            loading='lazy'
                             className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
                             onError={(e) => {
                                 e.target.src = 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg';

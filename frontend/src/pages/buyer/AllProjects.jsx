@@ -918,7 +918,7 @@ const AllProjects = () => {
                                                 {/* Avatar & Basic Info */}
                                                 <div className="flex items-start gap-3 md:w-1/3">
                                                     <img
-                                                        src={applicant.freelancer?.profileImage || dummyUserImg}
+                                                        src={applicant?.profileImage || dummyUserImg}
                                                         alt={applicant.name}
                                                         className="w-12 h-12 rounded-full object-cover"
                                                     />

@@ -531,6 +531,7 @@ const ProjectDetails = () => {
                                     <div className="relative h-64 md:h-96">
                                         <img
                                             src={project.gallery[activeSlide]?.url}
+                                            loading='lazy'
                                             alt={`Project image ${activeSlide + 1}`}
                                             className="w-full h-full object-cover"
                                         />
@@ -564,6 +565,7 @@ const ProjectDetails = () => {
                                                 >
                                                     <img
                                                         src={img.url}
+                                                        loading='lazy'
                                                         alt={`Thumbnail ${index + 1}`}
                                                         className="w-full h-full object-cover"
                                                     />
@@ -665,6 +667,7 @@ const ProjectDetails = () => {
                                         {project.buyer.profileImage ? (
                                             <img
                                                 src={project.buyer.profileImage}
+                                                loading='lazy'
                                                 alt={project.buyer.displayName || project.buyer.firstName}
                                                 className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm"
                                             />
@@ -794,13 +797,13 @@ const ProjectDetails = () => {
                                                             <Briefcase size={18} />
                                                             Apply for this Project
                                                         </button>
-                                                        <button
+                                                        {/* <button
                                                             onClick={handleContactBuyer}
                                                             className="w-full border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
                                                         >
                                                             <Mail size={18} />
                                                             Contact Buyer
-                                                        </button>
+                                                        </button> */}
                                                     </>
                                                 )
                                             ) : isAuthenticated && user?.userType === 'buyer' ? (
@@ -1013,6 +1016,7 @@ const ProjectDetails = () => {
                                                     <img
                                                         src={applicant.avatar || applicant.freelancer?.profileImage}
                                                         alt={applicant.name}
+                                                        loading='lazy'
                                                         className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                                                     />
                                                 ) : (

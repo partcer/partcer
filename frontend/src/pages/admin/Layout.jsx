@@ -12,7 +12,7 @@ function Layout(){
             <ScrollToTopIcon />
             <Toaster />
             {/* <AdminHeader /> */}
-            <MobileNav />
+            {/* <MobileNav /> */}
             <Outlet />
             <Footer />
             {isSearchFormPopUpOpen && <SearchFormPopUp closePopup={closePopup} />}

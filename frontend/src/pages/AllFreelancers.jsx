@@ -197,7 +197,7 @@ const FiltersSection = ({
                         />
                     </button>
                     <div className={`space-y-2 max-h-48 overflow-y-auto ${activeFilterSections.skills ? 'block' : 'hidden'}`}>
-                        {skillsList.slice(0, 10).map(skill => (
+                        {skillsList.map(skill => (
                             <label key={skill._id} className="flex items-center gap-3 cursor-pointer">
                                 <input
                                     type="checkbox"
@@ -208,8 +208,8 @@ const FiltersSection = ({
                                 <span className="text-gray-600">{skill.name}</span>
                             </label>
                         ))}
-                        {skillsList.length > 10 && (
-                            <p className="text-xs text-gray-500 mt-1">Showing 10 of {skillsList.length} skills</p>
+                        {skillsList.length > 0 && (
+                            <p className="text-xs text-gray-500 mt-1">Showing {skillsList.length} of {skillsList.length} skills</p>
                         )}
                     </div>
                 </div>
@@ -643,7 +643,7 @@ function AllFreelancers() {
 
                                 <div className="flex items-center gap-3">
                                     {/* View Mode Toggle */}
-                                    <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
+                                    {/* <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
                                         <button
                                             onClick={() => setViewMode("grid")}
                                             className={`p-1.5 md:p-2 rounded transition-colors ${viewMode === "grid" ? "bg-white shadow-sm" : "hover:bg-gray-200"}`}
@@ -658,7 +658,7 @@ function AllFreelancers() {
                                         >
                                             <List size={16} className={viewMode === "list" ? "text-primary" : "text-gray-500"} />
                                         </button>
-                                    </div>
+                                    </div> */}
 
                                     {/* Sort Dropdown */}
                                     <div className="flex items-center gap-2">

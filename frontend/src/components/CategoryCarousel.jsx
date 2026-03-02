@@ -162,7 +162,7 @@ const CategoryCarousel = () => {
                                 </span>
                                 <h3 className="text-white text-xl font-semibold mb-2">
                                     <Link
-                                        to={`/search-task/?category=${category.slug}`}
+                                        to={`/services/?category=${category.slug}`}
                                         className="hover:text-primary-light transition-colors"
                                     >
                                         {category.name}
@@ -171,7 +171,7 @@ const CategoryCarousel = () => {
 
                                 {/* Explore button */}
                                 <Link
-                                    to={`/search-task/?category=${category.slug}`}
+                                    to={`/services/?category=${category.slug}`}
                                     className="text-white/90 hover:text-white text-sm font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-all duration-300"
                                 >
                                     Explore services

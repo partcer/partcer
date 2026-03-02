@@ -440,7 +440,7 @@ export const getPublicParentCategories = asyncHandler(async (req, res) => {
     level: 0,
     isActive: true,
   })
-    .select("name slug image.url order")
+    .select("name slug image.url serviceCount order")
     .sort({ order: 1, name: 1 });
 
   return res

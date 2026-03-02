@@ -116,7 +116,7 @@ const MegaMenuDesktop = () => {
     const secondRow = parentCategories;
 
     return (
-        <div className="w-[920px] rounded-2xl bg-white p-8 shadow-2xl">
+        <div className="w-[920px] max-h-[90vh] overflow-y-scroll rounded-2xl bg-white p-8 shadow-2xl">
             {/* Services Section - First Row */}
             {firstRow.length > 0 && (
                 <Section

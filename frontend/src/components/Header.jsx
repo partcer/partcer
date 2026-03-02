@@ -111,7 +111,7 @@ const Header = () => {
                                     className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-md cursor-pointer hover:bg-primary/90 transition"
                                     onClick={() => {
                                         navigate('/login');
-                                        setIsMenuOpen(false);
+                                        setMobileOpen(false);
                                     }}
                                 >
                                     <LogIn size={20} />
@@ -134,7 +134,7 @@ const Header = () => {
                                     className="text-white text-lg"
                                     onClick={() => {
                                         navigate('/login');
-                                        setIsMenuOpen(false);
+                                        setMobileOpen(false);
                                     }}
                                 >
                                     Log In
@@ -189,7 +189,7 @@ const Header = () => {
 
                     <div
                         className={`overflow-hidden transition-all duration-300
-    ${mobileCategoriesOpen ? 'max-h-[1200px] opacity-100' : 'hidden max-h-0 opacity-0'}
+    ${mobileCategoriesOpen ? 'max-h-full opacity-100' : 'hidden max-h-0 opacity-0'}
   `}
                     >
                         <div className={`${mobileCategoriesOpen ? 'block pt-4' : 'hidden'}`}>

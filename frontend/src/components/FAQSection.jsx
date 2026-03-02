@@ -47,7 +47,7 @@ function FAQSection() {
                         </div>
 
                         <div className="wr-button-wrapper">
-                            <Link href="/contact" className="wr-btn wr-primary-btn inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors">
+                            <Link to="/contact" className="wr-btn wr-primary-btn inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors">
                                 <span>Contact Our Team</span>
                             </Link>
                         </div>

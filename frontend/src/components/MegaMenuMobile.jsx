@@ -93,7 +93,7 @@ const MegaMenuMobile = () => {
 
     // Split categories into two groups for display
     const firstRow = parentCategories;
-    const secondRow = parentCategories;
+    const secondRow = parentCategories; 
 
     return (
         <div className="space-y-8">

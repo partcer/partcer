@@ -59,7 +59,7 @@ const navigationItems = [
     {
         type: 'link',
         name: 'Users',
-        path: '/admin/users',
+        path: '/admin/users/all',
         icon: <Users size={20} />
     },
     {
