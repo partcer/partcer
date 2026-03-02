@@ -138,14 +138,14 @@ const MessageInput = ({ onSendMessage, onTyping }) => {
             )}
 
             {/* Input Area */}
-            <div className="flex items-end space-x-2">
-                <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2">
+            <div className="flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-2 w-full">
+                <div className="flex-1 w-full bg-gray-100 rounded-2xl px-4 py-2">
                     <textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         onKeyDown={handleKeyPress}
                         placeholder="Type your message..."
-                        className="w-full bg-transparent outline-none resize-none max-h-32 text-gray-900 placeholder-gray-400"
+                        className="w-full bg-transparent outline-none resize-none max-h-32 text-gray-900 placeholder-gray-400 text-base sm:text-sm"
                         rows="1"
                         style={{ minHeight: '40px' }}
                     />
@@ -161,28 +161,28 @@ const MessageInput = ({ onSendMessage, onTyping }) => {
                     />
                 </div>
 
-                <div className="flex items-center space-x-1">
+                <div className="flex items-center justify-end space-x-1 w-full sm:w-auto">
                     {/* Attachment Button */}
                     <button
                         onClick={() => fileInputRef.current?.click()}
                         disabled={uploading}
-                        className="p-2 hover:bg-gray-100 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="p-3 sm:p-2 hover:bg-gray-100 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        <Paperclip size={20} className="text-gray-500" />
+                        <Paperclip size={22} className="text-gray-500" />
                     </button>
 
                     {/* Voice Message Button (Future feature) */}
-                    <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                        <Video size={22} className="text-gray-500" />
+                    <button className="p-3 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
+                        <Video size={24} className="text-gray-500" />
                     </button>
 
                     {/* Send Button */}
                     <button
                         onClick={handleSend}
                         disabled={(!message.trim() && attachments.length === 0) || uploading}
-                        className="p-3 bg-primary hover:bg-primary/90 text-white rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="p-3 sm:p-3 bg-primary hover:bg-primary/90 text-white rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        <Send size={20} />
+                        <Send size={22} className="" />
                     </button>
                 </div>
             </div>
